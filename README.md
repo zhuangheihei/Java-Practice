@@ -1,3 +1,3 @@
 ### This workspace is intended for practicing data strucutures and algorithms in Java
-#### And all this file will be push to Github as a record.
+#### And all these files will be documented by pushing to Github.
 #### Java-Practice
