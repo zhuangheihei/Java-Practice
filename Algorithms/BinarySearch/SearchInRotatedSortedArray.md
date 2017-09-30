@@ -2,9 +2,9 @@
 ```
 (i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
 ```
-You are given a target value to search. If found in the array return its index, otherwise return -1.
+*You are given a target value to search. If found in the array return its index, otherwise return -1.*
 
-You may assume no duplicate exists in the array.
+*You may assume no duplicate exists in the array.*
 
 - 重点就是比较target，头指针和尾指针，看它们具体在哪个部分
 - corner case还蛮多的，要详细考虑
