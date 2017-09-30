@@ -1,6 +1,8 @@
-/*
-    Given a string, reverse it.
-*/
+Given a string, reverse it.
+
+- Easy problem, don't need to say more.
+
+```java
 class Solution {
     public String reverseString(String s) {
         char[] rev = s.toCharArray();
@@ -16,3 +18,4 @@ class Solution {
         return new String(rev);
     }
 }
+```
