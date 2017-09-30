@@ -1,3 +1,8 @@
+Given two number as linked list, return their sum as linked list.
+
+- Simply add them.
+
+```java
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int carry = 0;
@@ -31,3 +36,4 @@ class Solution {
         
     }
 }
+```
