@@ -1,3 +1,6 @@
+/*
+    Given a string, reverse it.
+*/
 class Solution {
     public String reverseString(String s) {
         char[] rev = s.toCharArray();
