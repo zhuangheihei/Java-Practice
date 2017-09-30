@@ -19,6 +19,8 @@ The median is (2 + 3)/2 = 2.5
 https://discuss.leetcode.com/topic/16797/very-concise-o-log-min-m-n-iterative-solution-with-detailed-explanation?page=1
 */
 
+//Hard题的解释就是长，只能贴上链接慢慢看了。
+
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int N1 = nums1.length;
