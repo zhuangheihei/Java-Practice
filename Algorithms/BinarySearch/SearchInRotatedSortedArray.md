@@ -8,7 +8,7 @@
 
 - 重点就是比较target，头指针和尾指针，看它们具体在哪个部分
 - corner case还蛮多的，要详细考虑
-```
+```java
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
