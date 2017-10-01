@@ -3,9 +3,6 @@
 *Example:*
 *Given a = 1 and b = 2, return 3.*
 
-
-
-
 I have been confused about bit manipulation for a very long time. So I decide to do a summary about it here.
 
 "&" AND operation, for example, 2 (0010) & 7 (0111) => 2 (0010)
