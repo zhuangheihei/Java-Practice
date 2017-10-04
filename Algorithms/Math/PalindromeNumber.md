@@ -1,5 +1,7 @@
 *Determine whether an integer is a palindrome. Do this without extra space.*
 
+- Use a extra int rev to store the reversed back half of x.
+- Note that x's length mignt be odd or even, need a judgement.
 
 ```java
 class Solution {
