@@ -83,3 +83,26 @@ class Solution {
     }
 }
 ```
+
+### 151. Reverse Words in String
+*String may contains leading, trailing and multiple spaces.*
+- Trim leading and trailing spaces
+- Split the string with .split(" +"), " +" means multiple spaces.
+- Append each word in String[] to a StringBuilder, with single space.
+- Convert to String and return.
+```java
+public class Solution {
+    public String reverseWords(String s) {
+        s = s.trim();
+        if(s.length() == 0) return s;
+        //" +" means multiple spaces.
+        String[] words = s.split(" +");
+        StringBuilder res = new StringBuilder();
+        for(int i = words.length - 1; i >= 0; i--){
+            res.append(words[i]);
+            if(i != 0) res.append(" ");
+        }
+        return res.toString();
+    }
+}
+```
