@@ -2,7 +2,7 @@
 *给定一串字符串，代表输入的电话键盘上的数字，求能够组合成多少种可能的字符串？*
 
 这题其实和combinations挺像的，就都是在一定的数字范围之内找组合，不同的是，这里的每一次recursive里边要组合的元素都是不同范围的。这题可以和combination类比一下。
-```
+```java
 public class Solution {
     private static final String[] keys = {"", "", "abc", "def", 
     "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
