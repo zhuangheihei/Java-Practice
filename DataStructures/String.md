@@ -18,7 +18,31 @@ Output: "bb"
 - We can use dynamic programming to solve.
 - Use two pointers [i, j] to indicate the start and end of the substring, ifs[i] == s[j] && dp[i-1, j-1] == true, this is palindrome.
 ```java
-
+class Solution {
+    public String longestPalindrome(String s) {
+        int n = s.length();
+        if(n == 0 || n == 1) return s;
+        boolean[][] dp = new boolean[n][n];
+        String res = null;
+        for(int i = 0; i < n; i++){
+            dp[i][i] = true;
+        }
+        //为啥从后面往前面扫？
+        for(int i = n - 1; i >= 0; i--){
+            for(int j = i; j < n; j++){
+                //满足前面这个条件，且长度在3及以下的，一定是palindrome
+                if(s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i+1][j-1])){
+                    dp[i][j] = true;
+                }
+                //
+                if(dp[i][j] && (res == null || j - i + 1 > res.length())){
+                    res = s.substring(i,j + 1);
+                } 
+            }
+        }
+        return res;
+    }
+}
 ```
 
 ### 6. ZigZag Conversion
