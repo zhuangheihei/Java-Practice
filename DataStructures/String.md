@@ -16,7 +16,7 @@ Output: "bb"
 ```
 - Brute force TLE.
 - We can use dynamic programming to solve.
-- Use two pointers [i, j] to indicate the start and end of the substring, ifs[i] == s[j] && dp[i-1, j-1] == true, this is palindrome.
+- Use two pointers [i, j] to indicate the start and end of the substring, ifs[i] == s[j] && dp[i+1, j-1] == true, this is palindrome.
 ```java
 class Solution {
     public String longestPalindrome(String s) {
