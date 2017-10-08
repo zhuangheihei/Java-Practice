@@ -20,6 +20,50 @@ class Solution {
     }
 }
 ```
+### 229. Majority Element II
+*求一个数组中出现次数超过3/n的所有元素。*
+- 用的是Boyer-Moore Majority Vote algorithm。其实就是上面一题的扩展，方法是一样的。
+```java
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if(nums.length == 0) return res;
+        int major1 = 0, major2 = 1,count1 = 0, count2 = 0;
+        for(int num: nums){
+            //注意这里要先把count++放前面。
+            if(num == major1)
+                count1 ++;
+            else if(num == major2)
+                count2 ++;
+            else if(count1 == 0){
+                major1 = num;
+                count1 ++;
+            }else if(count2 == 0){
+                major2 = num;
+                count2 ++;
+            }else{
+                count1--;
+                count2--;
+            }
+        }
+        count1 = 0;
+        count2 = 0;
+        //统计两个数出现次数是否超过了N/3
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == major1) 
+                count1++;
+            else if(nums[i] == major2) 
+                count2++;
+        }
+        if(count1 > nums.length / 3)
+            res.add(major1);
+        if(count2 > nums.length / 3)
+            res.add(major2);
+        return res;
+    }
+}
+```
+
 ### 561. Array Partition I
 *Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.*
 
