@@ -38,7 +38,41 @@ class Solution {
     }
 }
 ```
-
+### 21. Merge Two Sorted Lists
+*给两个sorted list，将它们merge成一个新list，要求新list的node要是原来两个list的nodes*
+- 需要创建一个新的list。挨个比较两个list的node值即可。
+```java
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode fakeHead = new ListNode(0);
+        ListNode cur = fakeHead;
+        while(l1 != null || l2 != null){
+            if(l1 != null && l2 != null){
+                if(l1.val > l2.val){
+                    cur.next = l2;
+                    cur = cur.next;
+                    l2 = l2.next;
+                }else{
+                    cur.next = l1;
+                    cur = cur.next;
+                    l1 = l1.next;
+                }
+            }else{
+                if(l1 != null){
+                    cur.next = l1;
+                    cur = cur.next; 
+                    l1 = l1.next;
+                }else if(l2 != null){
+                    cur.next = l2;
+                    cur = cur.next;
+                    l2 = l2.next;
+                }
+            }
+        }
+        return fakeHead.next;
+    }
+}
+```
 ### 206. Reverse Linked List
 *Reverse a singly linked list.*
 
