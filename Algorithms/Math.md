@@ -82,14 +82,30 @@ class Solution {
     }
 }
 ```
-
+### 66. Plus One
+*给一个用数组表示的整数，给它加上1. 该数组没有leading和trailing zeros。*
+- 其实很简单，需要一个新数组的情况就是所有的位数都是9。如果一个数不是9，那么长度就不变。
+- 如果一个位上不为9，那么它自加1即可。如果为9，那么置0，下一位加1.
+```java
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int n = digits.length;
+        for(int i = n - 1; i >= 0; i--){
+            if(digits[i] < 9){
+                digits[i] ++;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+        
+        int[] res = new int[n + 1];
+        res[0] = 1;
+        return res;
+    }
+}
+```
 ### 292. Nim Game
-*You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.*
-
-*Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.*
-
-*For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.*
-
+*一堆石头，一个人能拿1-3个，我先拿，朋友后拿。问什么情况下我必然能赢？*
 - Very tricky, if the number can not be devided by 4 then we can definitely win.
 
 ```java
