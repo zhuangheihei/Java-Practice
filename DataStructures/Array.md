@@ -63,6 +63,27 @@ class Solution {
     }
 }
 ```
+### 283. Move Zeroes
+*给一个数组，将0都移到数组后面去，其他非0元素顺序保持不变*
+- 遍历数组，用一个count记录非0元素的个数，将nums[count]赋为第count个非零元素，然后count++.
+- 最后将count及之后的元素置为0即可
+```java
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != 0){
+                nums[count] = nums[i];
+                count++;
+            }
+        }
+        
+        for(int i = count; i < nums.length; i++){
+            nums[i] = 0;
+        }
+    }
+}
+```
 
 ### 561. Array Partition I
 *Given an array of 2n integers, your task is to group these integers into n pairs of integer, say (a1, b1), (a2, b2), ..., (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.*
