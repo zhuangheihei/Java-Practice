@@ -75,7 +75,7 @@ class Solution {
 ```
 ### 141. LinkedList Cycle
 * Given a linked list, determine if it has cycle.
-    * Use two pointers, fast and slow, fast goes two steps each time, slow goes one step.
+    * Use two pointers, fast and slow, fast goes two steps each time, slow goes one step.
     * If there is cycle, two pointers will finally meet.
     * Becareful when checking if the pointer exceed their boundary.
     
