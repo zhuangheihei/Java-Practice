@@ -78,6 +78,10 @@ class Solution {
     * Use two pointers, fast and slow, fast goes two steps each time, slow goes one step.
     * If there is cycle, two pointers will finally meet.
     * Becareful when checking if the pointer exceed their boundary.
+
+### 148. Sort List(More Practice)
+* Sort a list in O(nlogn) time complexity and constant space complexity.
+    * Sort the list in O(nlogn) means using merge sort.
     
 ### 206. Reverse Linked List
 *Reverse a singly linked list.*
