@@ -82,6 +82,52 @@ class Solution {
 ### 148. Sort List(More Practice)
 * Sort a list in O(nlogn) time complexity and constant space complexity.
     * Sort the list in O(nlogn) means using merge sort.
+    * Pay attention that when deviding the list into two parts, need to set the left part's tail points to null, otherwise stack overflow error occurs.
+```java
+class Solution {
+    public ListNode sortList(ListNode head) {
+        if(head == null || head.next == null) return head; //when the list has only one element, no need to sort
+        ListNode fast = head;
+        ListNode slow = head;
+        ListNode prev = null;
+        
+        //Devide list into two part
+        while(fast != null && fast.next != null){
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        prev.next = null; //这一句是用来截开前后两个list的，前一半list的尾部也要是null，否则递归时会stackoverflow.
+        
+        //Sort each part, recursive call
+        ListNode left = sortList(head);
+        ListNode right = sortList(slow);
+        
+        return merge(left, right);
+    }
+    
+    private ListNode merge(ListNode l1, ListNode l2){
+        ListNode fakeHead = new ListNode(0);
+        ListNode cur = fakeHead;
+        while(l1 != null && l2 != null){
+            if(l1.val <= l2.val){
+                cur.next = l1;
+                l1 = l1.next;
+            }else if(l2.val < l1.val){
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+        if(l1 != null)
+            cur.next = l1;
+        if(l2 != null)
+            cur.next = l2;
+        
+        return fakeHead.next;
+    }
+}
+```
     
 ### 206. Reverse Linked List
 *Reverse a singly linked list.*
