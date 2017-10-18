@@ -27,3 +27,8 @@ class Solution {
     }
 }
 ```
+
+### 226. Invert Binary Tree
+* Given a binary tree, invert it.
+    * Write a helper function with void return value. It will get the job done.
+    * In the helper function, first go all the way down to the leaf nodes, then invert them level by level.
