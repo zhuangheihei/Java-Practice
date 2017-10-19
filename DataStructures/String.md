@@ -17,6 +17,7 @@ Output: "bb"
 - Brute force TLE.
 - We can use dynamic programming to solve.
 - Use two pointers [i, j] to indicate the start and end of the substring, ifs[i] == s[j] && dp[i+1, j-1] == true, this is palindrome.
+
 ```java
 class Solution {
     public String longestPalindrome(String s) {
@@ -93,10 +94,9 @@ class Solution {
 
 ### 14. Longest Common Prefix
 
-*Write a function to find the longest common prefix string amongst an array of strings.*
-
-- Use .indexOf() to find out if there is common prefix.
-- Use substring to shorten the length of prefix.
+* Write a function to find the longest common prefix string amongst an array of strings.
+    * Use .indexOf() to find out if there is common prefix.
+    * Use substring to shorten the length of prefix.
 ```java
 class Solution {
     public String longestCommonPrefix(String[] strs) {
@@ -111,13 +111,43 @@ class Solution {
     }
 }
 ```
+### 38. Count and Say
+* Given an integer n, generate the nth term of the count-and-say sequence.
+    * This is a trivial and annoying solution.
+```java
+class Solution {
+    public String countAndSay(int n) {
+            StringBuilder curr=new StringBuilder("1");
+	    	StringBuilder prev;
+	    	int count;
+	    	char say;
+	        for (int i=1;i<n;i++){
+	        	prev=curr;
+	 	        curr=new StringBuilder();       
+	 	        count=1;
+	 	        say=prev.charAt(0);
+	 	        
+	 	        for (int j=1,len=prev.length();j<len;j++){
+	 	        	if (prev.charAt(j)!=say){
+	 	        		curr.append(count).append(say);
+	 	        		count=1;
+	 	        		say=prev.charAt(j);
+	 	        	}
+	 	        	else count++;
+	 	        }
+	 	        curr.append(count).append(say);
+	        }	       	        
+	        return curr.toString();
+    }
+}
+```
 
 ### 151. Reverse Words in String
-*String may contains leading, trailing and multiple spaces.*
-- Trim leading and trailing spaces
-- Split the string with .split(" +"), " +" means multiple spaces.
-- Append each word in String[] to a StringBuilder, with single space.
-- Convert to String and return.
+* String may contains leading, trailing and multiple spaces.
+    * Trim leading and trailing spaces
+    * Split the string with .split(" +"), " +" means multiple spaces.
+    * Append each word in String[] to a StringBuilder, with single space.
+    * Convert to String and return.
 ```java
 public class Solution {
     public String reverseWords(String s) {
