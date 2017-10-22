@@ -5,7 +5,9 @@
 * 这题还要注意一个最高位的carry的问题。
 
 ### 445. Add Two Numbers II
-同样是给两个用链表表示的数字，
+同样是给两个用链表表示的数字，但是这里链表的头存的是高位，链表尾巴存的是低位的。
+* 这里就用两个stack来分别储存两个链表的数字，然后加起来。
+
 ---
 ### 21. Merge Two Sorted Lists
 *给两个sorted list，将它们merge成一个新list，要求新list的node要是原来两个list的nodes*
