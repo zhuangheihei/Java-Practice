@@ -61,12 +61,53 @@ class Solution {
     }
 }
 ```
+### 15. 3Sum
+*Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.*
+- 用Two pointers。固定第一个指针i，然后后面用two pointers做two sum，target就是 -nums[i]
+- 找到three sum后就将它放入res中，同时跳过重复的元素。三个指针都要跳。
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        ArrayList<List<Integer>> res = new ArrayList<List<Integer>>();        
+        for(int i = 0; i < nums.length; i++){
+            int target = - nums[i];
+            int l = i + 1;
+            int r = nums.length - 1;
+            //跑后面两个指针
+            while(l < r){
+                int sum = nums[l] + nums[r];
+                if(sum > target) r--;
+                else if(sum < target) l++;
+                else {//找到three sum了
+                    ArrayList<Integer> temp = new ArrayList<>();    
+                    temp.add(nums[i]);
+                    temp.add(nums[l]);
+                    temp.add(nums[r]);
+                    res.add(temp);
+                    //输出答案后找是否有重复的，有就跳过
+                    while(l < r && nums[l] == temp.get(1)){
+                        l++;
+                    }
+                    //输出答案后找重复的东西
+                    while(l < r && nums[r] == temp.get(2)){
+                        r--;
+                    }
+                }
+            }
+            //跳过重复的nums[i]
+            while(i+1 < nums.length && nums[i+1] == nums[i]){ i++;}
+        }
+        return res;
+    }
+}
+```
+
 
 ### 344. Reverse String
 *Given a string, reverse it.*
-
+- 简单题
 - Easy problem, don't need to say more.
-
 ```java
 class Solution {
     public String reverseString(String s) {

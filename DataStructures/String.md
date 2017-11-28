@@ -3,6 +3,53 @@
     * 一种有用的方法是对当前的字符为中心扩展palindrome，但是palindrome有可能为单数也有可能为复数长度的。
 
  
+###  5. Longest Palindromic Substring
+*Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.*
+```
+Example:
+
+Input: "babad"
+
+Output: "bab"
+
+Note: "aba" is also a valid answer.
+Example:
+
+Input: "cbbd"
+
+Output: "bb"
+```
+- Brute force TLE.
+- We can use dynamic programming to solve.
+- Use two pointers [i, j] to indicate the start and end of the substring, ifs[i] == s[j] && dp[i+1, j-1] == true, this is palindrome.
+
+```java
+class Solution {
+    public String longestPalindrome(String s) {
+        int n = s.length();
+        if(n == 0 || n == 1) return s;
+        boolean[][] dp = new boolean[n][n];
+        String res = null;
+        for(int i = 0; i < n; i++){
+            dp[i][i] = true;
+        }
+        //为啥从后面往前面扫？
+        for(int i = n - 1; i >= 0; i--){
+            for(int j = i; j < n; j++){
+                //满足前面这个条件，且长度在3及以下的，一定是palindrome
+                if(s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i+1][j-1])){
+                    dp[i][j] = true;
+                }
+                //
+                if(dp[i][j] && (res == null || j - i + 1 > res.length())){
+                    res = s.substring(i,j + 1);
+                } 
+            }
+        }
+        return res;
+    }
+}
+```
 
 ### 6. ZigZag Conversion
 *The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)*
@@ -52,10 +99,9 @@ class Solution {
 
 ### 14. Longest Common Prefix
 
-*Write a function to find the longest common prefix string amongst an array of strings.*
-
-- Use .indexOf() to find out if there is common prefix.
-- Use substring to shorten the length of prefix.
+* Write a function to find the longest common prefix string amongst an array of strings.
+    * Use .indexOf() to find out if there is common prefix.
+    * Use substring to shorten the length of prefix.
 ```java
 class Solution {
     public String longestCommonPrefix(String[] strs) {
@@ -70,6 +116,7 @@ class Solution {
     }
 }
 ```
+<<<<<<< HEAD
 ### 151. Reverse Words in a String
 *Given an input string, reverse the string word by word.*
 ```
@@ -128,3 +175,58 @@ public class Solution {
   }
 }
 ```
+=======
+### 38. Count and Say
+* Given an integer n, generate the nth term of the count-and-say sequence.
+    * This is a trivial and annoying solution.
+```java
+class Solution {
+    public String countAndSay(int n) {
+            StringBuilder curr=new StringBuilder("1");
+	    	StringBuilder prev;
+	    	int count;
+	    	char say;
+	        for (int i=1;i<n;i++){
+	        	prev=curr;
+	 	        curr=new StringBuilder();       
+	 	        count=1;
+	 	        say=prev.charAt(0);
+	 	        
+	 	        for (int j=1,len=prev.length();j<len;j++){
+	 	        	if (prev.charAt(j)!=say){
+	 	        		curr.append(count).append(say);
+	 	        		count=1;
+	 	        		say=prev.charAt(j);
+	 	        	}
+	 	        	else count++;
+	 	        }
+	 	        curr.append(count).append(say);
+	        }	       	        
+	        return curr.toString();
+    }
+}
+```
+
+### 151. Reverse Words in String
+* String may contains leading, trailing and multiple spaces.
+    * Trim leading and trailing spaces
+    * Split the string with .split(" +"), " +" means multiple spaces.
+    * Append each word in String[] to a StringBuilder, with single space.
+    * Convert to String and return.
+```java
+public class Solution {
+    public String reverseWords(String s) {
+        s = s.trim();
+        if(s.length() == 0) return s;
+        //" +" means multiple spaces.
+        String[] words = s.split(" +");
+        StringBuilder res = new StringBuilder();
+        for(int i = words.length - 1; i >= 0; i--){
+            res.append(words[i]);
+            if(i != 0) res.append(" ");
+        }
+        return res.toString();
+    }
+}
+```
+>>>>>>> a36848a1bf0e58c1d3e6daef90666d4f529e98a9
