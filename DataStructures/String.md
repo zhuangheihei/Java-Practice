@@ -1,6 +1,4 @@
-### 5. Longest Palindromic Substring
-* Given a string s, find the longest palindromic substring in s and return it. You may assume that the maximum length of s is 1000.
-    * 一种有用的方法是对当前的字符为中心扩展palindrome，但是palindrome有可能为单数也有可能为复数长度的。
+
 
  
 ###  5. Longest Palindromic Substring
