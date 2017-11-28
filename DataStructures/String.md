@@ -1,20 +1,7 @@
 ### 5. Longest Palindromic Substring
-*Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.*
-```
-Example:
+* Given a string s, find the longest palindromic substring in s and return it. You may assume that the maximum length of s is 1000.
+    * 一种有用的方法是对当前的字符为中心扩展palindrome，但是palindrome有可能为单数也有可能为复数长度的。
 
-Input: "babad"
-
-Output: "bab"
-
-Note: "aba" is also a valid answer.
-Example:
-
-Input: "cbbd"
-
-Output: "bb"
-```
-- Brute force TLE.
  
 
 ### 6. ZigZag Conversion
@@ -81,5 +68,63 @@ class Solution {
         }
         return pre;
     }
+}
+```
+### 151. Reverse Words in a String
+*Given an input string, reverse the string word by word.*
+```
+For example,
+Given s = "the sky is blue",
+return "blue is sky the".
+```
+- Test cases are very dispicable.
+```java
+public class Solution {
+    public String reverseWords(String s) {
+        if (s == null) return null;
+    
+        char[] a = s.toCharArray();
+        int n = a.length;
+
+        // step 1. reverse the whole string
+        reverse(a, 0, n - 1);
+        // step 2. reverse each word
+        reverseWords(a, n);
+        // step 3. clean up spaces
+        return cleanSpaces(a, n);
+    }
+    
+    private void reverse(char[] str, int i, int j){
+        while(i < j){
+            char temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    
+    private String cleanSpaces(char[] a, int n) {
+    int i = 0, j = 0;
+      
+    while (j < n) {
+      while (j < n && a[j] == ' ') j++;             // skip spaces
+      while (j < n && a[j] != ' ') a[i++] = a[j++]; // keep non spaces
+      while (j < n && a[j] == ' ') j++;             // skip spaces
+      if (j < n) a[i++] = ' ';                      // keep only one space
+    }
+  
+    return new String(a).substring(0, i);
+  }
+    
+    private void reverseWords(char[] a, int n) {
+    int i = 0, j = 0;
+      
+    while (i < n) {
+      while (i < j || i < n && a[i] == ' ') i++; // skip spaces
+      while (j < i || j < n && a[j] != ' ') j++; // skip non spaces
+      reverse(a, i, j - 1);                      // reverse the word
+    }
+  }
 }
 ```
