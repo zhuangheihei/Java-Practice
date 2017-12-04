@@ -1,9 +1,11 @@
-public class StackArray<T> {
+import java.util.Arrays;
+
+public class StackDArray<T> {
     Object[] ArrayStack;
     int size;
     int top;
     
-    public StackArray(int size) { //initializing arraystack
+    public StackDArray(int size) { //initializing arraystack
         this.size = size;   //define the size
         ArrayStack = new Object[this.size]; //initialize the stack array
         top = -1; //define the pointer outside the stack
@@ -18,10 +20,7 @@ public class StackArray<T> {
     }
     
     public void push(Object newItem){
-        if(isFull()){ //make sure stack has space to push
-            System.out.println("stack is full");
-            return;
-        }
+        ensureCapacity(top+2);
         ArrayStack[++top] = newItem;
     }
     
@@ -32,6 +31,20 @@ public class StackArray<T> {
         }
         T item = (T) ArrayStack[top--];
         return item;
+    }
+    
+    public void ensureCapacity(int minCapacity){
+        int oldCapacity = ArrayStack.length;
+        if(minCapacity > oldCapacity){
+            int newCapacity = oldCapacity*2;
+            if(newCapacity<minCapacity)
+                newCapacity = minCapacity;
+            ArrayStack = Arrays.copyOf(ArrayStack,newCapacity);
+        }
+    }
+    
+    public int getSize(){
+        return ArrayStack.length;
     }
     
 }
