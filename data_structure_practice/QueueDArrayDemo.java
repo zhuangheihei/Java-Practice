@@ -7,4 +7,4 @@ public class QueueDArrayDemo {
         q.queue(3);
         System.out.println("queue size is:" + q.getSize());
     }
-}
+} 
